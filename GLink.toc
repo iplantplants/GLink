@@ -1,0 +1,26 @@
+## Interface: 70300
+## Title: GLink
+## Version: 1.3
+## Notes: Adds useful Hyperlinks to the chat.
+## Author: Graydon
+## DefaultState: Enabled
+## SavedVariables: LinkColour
+Linkifier_Main.lua
+Linkifier_PhaseLinks.lua
+Linkifier_Tele.lua
+Linkifier_Hover.lua
+Linkifier_Skybox.lua
+Linkifier_ClickableLink.lua
+Linkifier_Debug.lua
+Linkifier_Creature.lua
+Linkifier_Lookup.lua
+Linkifier_NPCinfo.lua
+Linkifier_GameObjects.lua
+Linkifier_GPS.lua
+Linkifier_ItemAdd.lua
+Linkifier_Spells.lua
+Linkifier_Worldport.lua
+play.lua
+BIMG.lua
+
+

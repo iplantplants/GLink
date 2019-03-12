@@ -1,0 +1,10 @@
+07/05/2016 - linkifier added.
+07/05/2016 - creature buttons added
+07/05/2016 - gobject buttons added
+08/05/2016 - gobject near buttons
+07/05/2016 - teleport buttons added
+03/07/2016 - more domain tlds added to url checker
+some time in 2016 - nnyellow there
+26/02/2017 - bimg
+28/05/2018 - copy guid
+12/06/2018 - improved copy guid
