@@ -43,7 +43,15 @@ local function chatLookupFilter(self,event,message,...)
 		displayID = messageCopy:match("DisplayID: (%d*)")
 		--print(GUID, entryID, displayID)
 		return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|HNGUID:"..GUID.."|h[Delete]|h|r - |cff"..LinkColour.."|HdisplayID:"..displayID.."|h[Morph]|h|r - |cff"..LinkColour.."|HdisplayID:"..displayID.."|h[Mount]|h|r",...;
-	end
+	
 
+	elseif messageCopy:match("Spawned creature") then
+		entryID, GUID = messageCopy:match("(%d*)%] %(GUID: (%d*)%)")
+		--print(entryID, GUID)
+		--print("Registered creature creation. Work in progress")
+		return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|HNGUID:"..GUID.."|h[Delete]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Copy GUID]|h|r",...;
+		
+	end
 end
+
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", chatLookupFilter);

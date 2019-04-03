@@ -92,7 +92,7 @@ local function chatGPSFilter(self,event,message,...)
 
 
 
-	if string.match(message, "Selected gameobject") or string.match(message, "Spawned gameobject") then
+	if string.match(message, "Selected gameobject") or string.match(message, "Spawned gameobject") and not string.match(message, "Spawned creature") then
 		gobjectEntry = messageCopy:match("%[.+ - (%d*)%]")
 		GUID = messageCopy:match("GUID: (%d*)")
 		x = string.match(messageCopy, "at X: (%-?%d*%.?%d*)")
@@ -112,7 +112,7 @@ local function chatGPSFilter(self,event,message,...)
 	end
 
 	--GOBJ near
-	if messageCopy:match("%[(.+) - (%d*)%] %(GUID:") then 
+	if messageCopy:match("%[(.+) - (%d*)%] %(GUID:") and not messageCopy:match("Spawned creature") then 
 		entryID, GUID = messageCopy:match("%[.+ - (%d*)%] - %(GUID: (%d*)%)")
 		--print("gobj near", entryID, GUID)
 		return false, message.." - |cff"..LinkColour.."|Hgameobject_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hgobentry:"..GUID.."|h[Teleport]|h|r - |cff"..LinkColour.."|Hgobentry:"..entryID.."|h[Select]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|r",...;
