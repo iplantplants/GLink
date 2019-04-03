@@ -49,7 +49,7 @@
 				end
 				ShowToolTip()
 				--print("Phase: ",phaseID)
-			elseif linkData:match("%[Delete%]") and not link:match("NGUID") then
+			elseif linkData:match("%[Delete%]") and not link:match("NGUID") and not link:match("forgecreature_entry") then
 				entryID = link:match("GUID:(%d*)")
 				tooltipMessage = "Delete GameObject with GUID: "..entryID;
 				ShowToolTip()
@@ -106,6 +106,11 @@
 			elseif linkData:match("%[Copy Coordinates%]") then
 				tooltipMessage = "Click to copy coordinates to chat";
 				ShowToolTip();		
+			elseif linkData:match("%[Delete%]") and link:match("forgecreature_entry") then
+				fGUID = link:match("forgecreature_entry:(%d*):forgecreatureName:")
+				tooltipMessage = "Delete forged NPC with ID: "..fGUID;
+				ShowToolTip();
+
 			else
 				GameTooltip:Hide()
 			end

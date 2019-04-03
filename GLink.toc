@@ -20,6 +20,7 @@ Linkifier_GPS.lua
 Linkifier_ItemAdd.lua
 Linkifier_Spells.lua
 Linkifier_Worldport.lua
+Linkifier_PhaseForge.lua
 play.lua
 BIMG.lua
 
