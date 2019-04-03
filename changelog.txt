@@ -1,76 +1,96 @@
-07/05/2016 - linkifier added.
-07/05/2016 - creature buttons added
-07/05/2016 - gobject buttons added
-08/05/2016 - gobject near buttons
-07/05/2016 - teleport buttons added
-03/07/2016 - more domain tlds added to url checker
-some time in 2016 - nnyellow there
-26/02/2017 - bimg
-28/05/2018 - copy guid
-12/06/2018 - improved copy guid
-???????
-
 # Changelog
 All notable changes to this project will be documented in this file.
 Date system: DD/MM/YYYY
 
 # Version History
 
-07/05/2016 - 0.0.5
-08/05/2016 - 0.1.0
-03/07/2016 - 0.1.5
-08/01/2017 - 0.3.0
-20/01/2017 - 0.3.5
-26/02/2017 - 0.4.0
-28/05/2018 - 0.5.0
-12/06/2018 - 0.5.5
-04/07/2018 - 0.6.0
-09/07/2018 - 0.6.5
-10/07/2018 - 0.7.0
-25/07/2018 - 0.7.5
-28/02/2019 - 0.8.0
-03/04/2019 - 0.8.5
+##	07/05/2016 - 0.0.5
+##	08/05/2016 - 0.1.0
+##	03/07/2016 - 0.1.5
+##	08/01/2017 - 0.3.0
+##	20/01/2017 - 0.3.5
+##	26/02/2017 - 0.4.0
+##	28/05/2018 - 0.5.0
+##	12/06/2018 - 0.5.5
+##	04/07/2018 - 0.6.0
+##	09/07/2018 - 0.6.5
+##	10/07/2018 - 0.7.0
+##	25/07/2018 - 0.7.5
+##	28/02/2019 - 0.8.0
+##	03/04/2019 - 0.8.5
 
 ## [Unreleased]
 
 ## [0.0.5] - 07/05/2016
 ### Added 
-+Hyperlinks for lookup results: item, object, creature, tele, spell
++ Hyperlinks for lookup results: item, object, creature, tele, spell.
 
 ## [0.1.0] - 08/05/2016
 ### Added
-+ Gobject near hyperlinks
++ Gobject near hyperlinks.
 
 ### Changed
-• Fixed Colour leaking in hyperlinks
+* Fixed colour leaking in hyperlinks.
 
-## [Released]
+## [Released on Epsilon (Cataclysm)]
 
 ## 0.1.5 - 03/07/2016
 ### Added
-+Copy URL hyperlink
++ Copy URL hyperlink.
++ nnyellow there.
+
+## 0.1.7 - 04/07/2016
+### Hotfix
++ Added more URL TLDs.
 
 ## [0.3.0] -  08/01/2017
+### Changes
+* Bugfixes.
 
 ## [0.3.5] - 20/01/2017
+### Changes
+* Bugfixes.
 
 ## [0.4.0] - 26/02/2017
+### Added
++ BIMG.lua
 
 ## [0.5.0] - 28/05/2018
+### Changes
+* Altered pattern matching sequence for various strings.
 
 ## [0.5.5] - 12/06/2018
+### Changes
+* Updated code for tooltip hover.
 
 ## [0.6.0] - 04/07/2018
+### Changes
+* Updated regex patterns to match Epsilon System Messages.
 
 ## [0.6.5] - 09/07/2018
+## [Released on Epsilon (Legion)]
+### Added
++ Copy GUID hyperlink.
 
 ## [0.7.0] - 10/07/2018
+### Changes
+* Various improvents to code.
+* Updated Copy GUID to extend to NPCs.
 
 ## [0.7.5] - 25/07/2018
+### Changes
+* Various improvements and bugfixes.
 
 ## [0.8.0] - 28/02/2019
+### Changes
+* Various improvements and bugfixes.
 
 ## [0.8.5] - 03/04/2019
+### Added
++ Made this changelog lol
++ Pattern matches and Hyperlinks for command: phase forge npc list.
++ Pattern matches for updated creature spawn system message.
++ Fixed issue where NPC's were being seen as objects.
 
 
 
