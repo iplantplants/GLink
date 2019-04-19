@@ -7,11 +7,14 @@ local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 		if type(text) == "string" and text:match("HNGUID:") and not IsModifiedClick() then
 			GUID = string.match(text, "HNGUID:(%d*)");
 			return deleteNPC();
+		elseif type(text) == "string" and text:match("Hnx") and text:match("%[Teleport%]") and not IsModifiedClick() then
+			x, y, z, mapID, orientation = text:match("Hnx:(-?%d*\.?%d*)y:(-?%d*\.?%d*)z:(-?%d*\.?%d*)m:(%d*)o:(-?%d*\.?%d*)|")
+			goToNPC(x,y,z,mapID,orientation)
 		elseif type(text) == "string" and text:match("HdisplayID") and not IsModifiedClick() then
 			displayID = string.match(text, "HdisplayID:(%d*)")
 			if text:match("%[Mount%]") then
 				return mountDisplay()
-			else
+			elseif text:match("%[Morph%]") then
 				return morphDisplay()
 			end
 			
@@ -20,6 +23,10 @@ local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 	return origChatFrame_OnHyperlinkShow(...); 
 end
 
+function goToNPC(x,y,z,map,o)
+	--print(x,y,z,map,o)
+	SendChatMessage(".worldport "..table.concat({x, y, z, map, o}, " "),"GUILD")
+end
 function deleteNPC()
 	SendChatMessage(".npc delete "..GUID, "GUILD")
 end
@@ -51,6 +58,19 @@ local function chatLookupFilter(self,event,message,...)
 		--print("Registered creature creation. Work in progress")
 		return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|HNGUID:"..GUID.."|h[Delete]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Copy GUID]|h|r",...;
 		
+	end
+
+	--NPC near
+	messageCopy = message:gsub("|", "")
+	if messageCopy:match("%d* - cffffffffHcreature:%d*h%[.+%sX:") then
+		--print("npc near", messageCopy)
+		GUID = messageCopy:match("%d* - ");
+		x, y, z, map = messageCopy:match("X:(-?%d*\.?%d*) Y:(-?%d*\.?%d*) Z:(-?%d*\.?%d*) MapId:(%d*)")
+		--print(GUID, x,y,z,map)
+
+		if GUID and x and y and z and map then
+			return false, message.." - |cff"..LinkColour.."|HNGUID:"..GUID.."|h[Delete]|h|r - ".."|cff"..LinkColour.."|Hnx:"..x.."y:"..y.."z:"..z.."m:"..map.."o:0|h[Teleport]|h|r",...;
+		end
 	end
 end
 

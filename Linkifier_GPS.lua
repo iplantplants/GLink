@@ -66,7 +66,8 @@ end
 
 function goToObject()
 	SendChatMessage(".worldport "..table.concat({x, y, z, mapID, orientation}, " "),"GUILD")
-	DEFAULT_CHAT_FRAME:AddMessage("Teleported to object.")
+	--DEFAULT_CHAT_FRAME:AddMessage("Teleported to object.")
+	print("|cff00ccff[GLink]|r teleported to object.")
 	GameTooltip:Hide()
 end
 
@@ -78,6 +79,7 @@ end
 
 function goToObjectGUID()
 	SendChatMessage(".gobject go "..entry, "GUILD")
+	print("|cff00ccff[GLink]|r teleported to object.")
 	GameTooltip:Hide()
 end
 
@@ -91,7 +93,6 @@ local function chatGPSFilter(self,event,message,...)
 	messageCopy = message:gsub("%|cff%x%x%x%x%x%x", ""):gsub("|r", "")
 
 
-
 	if string.match(message, "Selected gameobject") or string.match(message, "Spawned gameobject") and not string.match(message, "Spawned creature") then
 		gobjectEntry = messageCopy:match("%[.+ - (%d*)%]")
 		GUID = messageCopy:match("GUID: (%d*)")
@@ -102,13 +103,12 @@ local function chatGPSFilter(self,event,message,...)
 		orientation = string.match(messageCopy, "orientation: (-?%d*\.?%d*)")
 		--print(gobjectEntry)
 		return false, message.." - |cff"..LinkColour.."|Hx:"..x.."y:"..y.."z:"..z.."m:"..mapID.."o:"..orientation.."|h[Teleport]|h|r - |cff"..LinkColour.."|Hgameobject_entry:"..gobjectEntry.."|h[Spawn]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Copy GUID]|h|r - |cff"..LinkColour.."|Hx:"..x.."y:"..y.."z:"..z.."m:"..mapID.."o:"..orientation.."|h[Copy Coordinates]|h|r",...;
-		else if string.match(message, "X:(-?%d*\.?%d*) Y:(-?%d*\.?%d*) Z:(-?%d*\.?%d*) MapId:(%d*)") then
+	elseif string.match(message, "X:(-?%d*\.?%d*) Y:(-?%d*\.?%d*) Z:(-?%d*\.?%d*) MapId:(%d*)") and not message:match("Hcreature:") then
 			entry, id = string.match(messageCopy,"(%d*) %(Entry: (%d*)%)")
 			
 			orientation = "0";
 			--x, y, z, mapID = string.match(message, "X:(-?%d*\.?%d*) Y:(-?%d*\.?%d*) Z:(-?%d*\.?%d*) MapId:(%d*)")
-			return false, message.."|cff"..LinkColour.."|Hgobentry:"..id.."|h[Select]|h|r - |cff"..LinkColour.."|Hgobentry:"..entry.."|h[Teleport]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|h|r",...;
-		end
+		return false, message.."|cff"..LinkColour.."|Hgobentry:"..id.."|h[Select]|h|r - |cff"..LinkColour.."|Hgobentry:"..entry.."|h[Teleport]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|h|r",...;
 	end
 
 	--GOBJ near
@@ -117,5 +117,9 @@ local function chatGPSFilter(self,event,message,...)
 		--print("gobj near", entryID, GUID)
 		return false, message.." - |cff"..LinkColour.."|Hgameobject_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hgobentry:"..GUID.."|h[Teleport]|h|r - |cff"..LinkColour.."|Hgobentry:"..entryID.."|h[Select]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|r",...;
 	end
+
+	--npc near
+
+
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", chatGPSFilter);

@@ -34,18 +34,22 @@
 				tooltipMessage = "Click to enter phase "..phaseID;
 				ShowToolTip()
 			elseif linkData:match("%[Teleport%]") and not link:match("gobentry:") then
-				if link:match("tele:") then
+				if link:match("tele:") or link:match("GUID") and not link:match("o:") then
 					--print(link, linkData)
+					if link:match("tele:") then
 					teleloc = link:match("tele:(%d*)")
 					tooltipMessage = "Teleport to "..teleloc;
+					else
+					tooltipMessage = "Teleport to Creature";
+					end
 				else
 				--print(link, linkData)
-				x = string.match(link, "x:(%-?%d*\.?%d*)")
-				y = string.match(link, "y:(-?%d*\.?%d*)")
-				z = string.match(link, "z:(-?%d*\.?%d*)")
-				m = string.match(link, "m:(%d*)")
-				o = string.match(link, "o:(-?%d*\.?%d*)")
-				tooltipMessage = "Teleport coordinates: X: "..x.. "Y: "..y.." Z: "..z.." map: "..m.." orientation: "..o;
+					x = string.match(link, "x:(%-?%d*\.?%d*)")
+					y = string.match(link, "y:(-?%d*\.?%d*)")
+					z = string.match(link, "z:(-?%d*\.?%d*)")
+					m = string.match(link, "m:(%d*)")
+					o = string.match(link, "o:(-?%d*\.?%d*)")
+					tooltipMessage = "Teleport coordinates: X: "..x.. "Y: "..y.." Z: "..z.." map: "..m.." orientation: "..o;
 				end
 				ShowToolTip()
 				--print("Phase: ",phaseID)
@@ -110,7 +114,6 @@
 				fGUID = link:match("forgecreature_entry:(%d*):forgecreatureName:")
 				tooltipMessage = "Delete forged NPC with ID: "..fGUID;
 				ShowToolTip();
-
 			else
 				GameTooltip:Hide()
 			end
