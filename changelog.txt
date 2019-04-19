@@ -92,7 +92,12 @@ Date system: DD/MM/YYYY
 + Pattern matches for updated creature spawn system message.
 + Fixed issue where NPC's were being seen as objects.
 
+## [0.9.0] - 20/04/2019
+### Changes
+* Fixed issue where AddOn module was concealing .npc near results.
 
+### Added
++ Added relevant Hyperlinks to npc near results.
 
 
 

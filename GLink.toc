@@ -1,6 +1,6 @@
 ## Interface: 70300
 ## Title: GLink
-## Version: 0.8.5
+## Version: 0.9.0
 ## Notes: Adds useful Hyperlinks to the chat.
 ## Author: Graydon
 ## DefaultState: Enabled
