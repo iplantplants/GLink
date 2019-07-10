@@ -18,6 +18,7 @@
 			return false
 			
 			end
+
 			--print(link,linkData)
 			if linkData:match("%[Add%]") then
 				--print("Add works")

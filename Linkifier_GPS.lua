@@ -115,7 +115,7 @@ local function chatGPSFilter(self,event,message,...)
 	if messageCopy:match("%[(.+) - (%d*)%] %(GUID:") and not messageCopy:match("Spawned creature") then 
 		entryID, GUID = messageCopy:match("%[.+ - (%d*)%] - %(GUID: (%d*)%)")
 		--print("gobj near", entryID, GUID)
-		return false, message.." - |cff"..LinkColour.."|Hgameobject_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hgobentry:"..GUID.."|h[Teleport]|h|r - |cff"..LinkColour.."|Hgobentry:"..entryID.."|h[Select]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|r",...;
+		return false, message.." - |cff"..LinkColour.."|Hgameobject_entry:"..entryID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hgobentry:"..GUID.."|h[Teleport]|h|r - |cff"..LinkColour.."|Hgobentry:"..entryID.."|h[Select]|h|r - |cff"..LinkColour.."|HGUID:"..GUID.."|h[Delete]|h|r",...;
 	end
 
 	--npc near
