@@ -67,5 +67,14 @@ local function chatLookupFilter(self,event,message,...)
             return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..npcID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hforgecreature_entry:"..npcID..":forgecreatureName:"..npcName.."|h[Delete]|h|r",...;
     end
 
+    if isForgeResult == false and message:match("A template has been created for editing called") then
+
+        local messageCopy = message:gsub("|r",""):gsub("|", ""):gsub("cff%x%x%x%x%x%x", "")
+        local npcName, npcID = messageCopy:match("%[(.+) %- (%d*)%]");
+        --print("NPC ID:",npcID, npcName)
+        return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..npcID.."|h[Spawn]|h|r - |cff"..LinkColour.."|Hforgecreature_entry:"..npcID..":forgecreatureName:"..npcName.."|h[Delete]|h|r",...;
+
+    end
+
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", chatLookupFilter);
