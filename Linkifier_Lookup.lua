@@ -5,17 +5,17 @@ local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 		if type(text) == "string" and text:match("Hln:") and not IsModifiedClick() then
 			--print("next pls")
 			return lookupNext();
-		end
-		if type(text) == string and text:match("HemotestateID:") and not IsModifiedClick() then
-			print("Emote")
-			local emoteID = text:match("HemotestateID:(%d*)");
+		
+		elseif type(text) == "string" and text:match("HemoteID:") and not IsModifiedClick() then
+			--print("Emote")
+			local emoteID = text:match("HemoteID:(%d*)");
 			return PlayEmote(emoteID);
 		end	
 	return origChatFrame_OnHyperlinkShow(...); 
 end
 
-function Playemote(emoteID)
-	print("playemote")
+function PlayEmote(emoteID)
+	print("Playing emote: |cff00ccff"..emoteID.."|r")
 	SendChatMessage(".mod stand "..emoteID,"GUILD");
 
 end
@@ -34,8 +34,8 @@ local function chatLookupFilter(self,event,message,...)
 	if messageCopy:match("cff00CCFF%d*r %- cffADFFFF") and not messageCopy:match(".m2") then
 
 		local emoteID = messageCopy:match("cff00CCFF(%d*)r %-");
-		
-		return false, message.." - |cff"..LinkColour.."|HemotestateID:"..emoteID.."|h[Emote]|h|r",...;
+		--print(emoteID)
+		return false, message.." - |cff"..LinkColour.."|HemoteID:"..emoteID.."|h[Emote]|h|r",...;
 
 	end
 
