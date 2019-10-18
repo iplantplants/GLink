@@ -16,12 +16,16 @@ local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 				return mountDisplay()
 			elseif text:match("%[Morph%]") then
 				return morphDisplay()
+			elseif text:match("%[Native%]") then
+				return modNative()
 			end
 			
 			
 		end		
 	return origChatFrame_OnHyperlinkShow(...); 
 end
+
+
 
 function goToNPC(x,y,z,map,o)
 	--print(x,y,z,map,o)
@@ -32,11 +36,15 @@ function deleteNPC()
 end
 
 function morphDisplay()
-	SendChatMessage(".morph "..displayID)
+	SendChatMessage(".morph "..displayID, "GUILD")
 end
 
 function mountDisplay()
-	SendChatMessage(".mod mount "..displayID)
+	SendChatMessage(".mod mount "..displayID, "GUILD")
+end
+
+function modNative()
+	SendChatMessage(".mod native "..displayID,"GUILD")
 end
 
 local function chatLookupFilter(self,event,message,...)
@@ -71,6 +79,12 @@ local function chatLookupFilter(self,event,message,...)
 		if GUID and x and y and z and map then
 			return false, message.." - |cff"..LinkColour.."|HNGUID:"..GUID.."|h[Delete]|h|r - ".."|cff"..LinkColour.."|Hnx:"..x.."y:"..y.."z:"..z.."m:"..map.."o:0|h[Teleport]|h|r",...;
 		end
+	end
+	--display creature
+	if messageCopy:match("cff00CCFF%d*r %- cffADFFFF") and messageCopy:match(".m2") then
+		displayID = messageCopy:match("cff00CCFF(%d*)r %-");
+		--print(displayID)
+		return false, message.." - |cff"..LinkColour.."|HdisplayID:"..displayID.."|h[Native]|h|r - |cff"..LinkColour.."|HdisplayID:"..displayID.."|h[Morph]|h|r - |cff"..LinkColour.."|HdisplayID:"..displayID.."|h[Mount]|h|r",...;
 	end
 end
 

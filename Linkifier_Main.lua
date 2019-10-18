@@ -36,10 +36,14 @@ local function chatFilter(self,event,message,sender,...)
 	--sanitise the string and sender before manipulating.
 	if messageCopy:match("%d*%.%d*%.%d*%.%d*") then return false; end;
 	
+	if messageCopy == nil then return false; end;
+	
 	if string.match(messageCopy, "Hplayer:(%a*)") then
 		sentFrom = string.match(messageCopy, "Hplayer:(%a+)");
 		else
+		if sender then
 			sentFrom = string.match(sender, "(%a+)");
+			end
 		end
 	
 	--Get rid of colour code at beginning of announce and phase announce message

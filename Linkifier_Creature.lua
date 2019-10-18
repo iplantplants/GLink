@@ -18,6 +18,9 @@ end
 local function chatLookupFilter(self,event,message,...)
 	
 
+
+
+
 	if string.match(message, "Hcreature_entry:%d*") then
 		creatureID = string.match(message, "Hcreature_entry:(%d*)")
 		return false, message.." - |cff"..LinkColour.."|Hcreature_entry:"..creatureID.."|h[Spawn]|h|r",...;

@@ -31,7 +31,7 @@
 				GameTooltip:SetHyperlink(link)
 				GameTooltip:Show()
 			elseif linkData:match("%[Phase: %d*%]") then
-				phaseID = linkData:match("%[Phase: (%d*)%]")
+				local phaseID = linkData:match("%[Phase: (%d*)%]")
 				tooltipMessage = "Click to enter phase "..phaseID;
 				ShowToolTip()
 			elseif linkData:match("%[Teleport%]") and not link:match("gobentry:") then
@@ -60,13 +60,13 @@
 				ShowToolTip()
 			elseif linkData:match("%[Select%]") then
 				
-				entryID = link:match("gobentry:(%d*)")
-				tooltipMessage = "Select GameObject with GUID: "..entryID;
+				local GUID = link:match("GUID:(%d*)")
+				tooltipMessage = "Select GameObject with GUID: "..GUID;
 				ShowToolTip()
 			
-			elseif linkData:match("%[Teleport%]") and link:match("gobentry:") then
-				entry = link:match("gobentry:(%d*)")
-				tooltipMessage = "Teleport to GameObject with GUID: "..entry;
+			elseif linkData:match("%[Go%]") and link:match("GUID:") then
+				local GUID = link:match("GUID:(%d*)")
+				tooltipMessage = "Teleport to GameObject with GUID: "..GUID;
 				ShowToolTip()
 			elseif linkData:match("%[Spawn%]") then
 				--print(linkData, link)

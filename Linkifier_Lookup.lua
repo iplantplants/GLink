@@ -5,8 +5,19 @@ local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 		if type(text) == "string" and text:match("Hln:") and not IsModifiedClick() then
 			--print("next pls")
 			return lookupNext();
-		end		
+		end
+		if type(text) == string and text:match("HemotestateID:") and not IsModifiedClick() then
+			print("Emote")
+			local emoteID = text:match("HemotestateID:(%d*)");
+			return PlayEmote(emoteID);
+		end	
 	return origChatFrame_OnHyperlinkShow(...); 
+end
+
+function Playemote(emoteID)
+	print("playemote")
+	SendChatMessage(".mod stand "..emoteID,"GUILD");
+
 end
 
 function lookupNext()
@@ -14,6 +25,19 @@ function lookupNext()
 end
 
 local function chatLookupFilter(self,event,message,...)
+
+
+	
+	messageCopy = message:gsub("|","");
+	--print(messageCopy)
+
+	if messageCopy:match("cff00CCFF%d*r %- cffADFFFF") and not messageCopy:match(".m2") then
+
+		local emoteID = messageCopy:match("cff00CCFF(%d*)r %-");
+		
+		return false, message.." - |cff"..LinkColour.."|HemotestateID:"..emoteID.."|h[Emote]|h|r",...;
+
+	end
 
 	if string.match(message, "Enter .lookup next to view the next 50 results") then
 		creatureID = string.match(message, "Htele:(%d*)")
