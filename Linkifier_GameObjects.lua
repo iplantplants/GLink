@@ -3,7 +3,7 @@
 local	origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 	ChatFrame_OnHyperlinkShow = function(...)
 	local chatFrame, link, text, button = ...;
-		if type(text) == "string" and text:match("Hgameobject_entry:") and not IsModifiedClick() then
+		if type(text) == "string" and text:match("Hgameobject_entry:") and text:match("%[Spawn%]") and not IsModifiedClick() then
 			objectID = string.match(text, "Hgameobject_entry:(%d*)");
 			return spawnObject();
 		end		
@@ -26,7 +26,7 @@ local function chatLookupFilter(self,event,message,...)
 	--print(message:gsub("|", ""), "lastsp")
 	local messageCopy = message:gsub("|cff00CCFF",""):gsub("|r","");
 	--print(messageCopy)
-	if  messageCopy:match("Entry: (%d*)") and messageCopy:match("Guid: (%d*)") then
+	if  messageCopy:match("Entry: (%d*)") and messageCopy:match("Guid: (%d*)") and not messageCopy:match("0x") then
 		--print("yeet")
 		objectEntry = messageCopy:match("Entry: (%d*)");
 		objectGUID = messageCopy:match("Guid: (%d*)");
