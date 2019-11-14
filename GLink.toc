@@ -2,7 +2,7 @@
 ## Title: GLink
 ## Version: 0.9.9
 ## Notes: Adds useful Hyperlinks to the chat.
-## Author: Graydon
+## Author: Gardener
 ## DefaultState: Enabled
 ## SavedVariables: LinkColour
 GLink.xml
