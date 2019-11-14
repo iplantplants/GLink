@@ -1,7 +1,7 @@
 --
 --
 --
-addon, GLink = ...;
+addonName, GLink = ...;
 
 local origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 	ChatFrame_OnHyperlinkShow = function(...)
@@ -50,7 +50,7 @@ local function debugChatLookupFilter(self,event,message,...)
 		for i = 1, table.getn(v["PATTERN"]) do
 			--print((v["PATTERN"][i]))
 			if message:match(v["PATTERN"][i]) and not ID and not IDType then --:gsub("%(",""):gsub("%)","")
-				print("match")
+				--print("match")
 				ID = message:match(v["PATTERN"][i]);
 				IDType = k;
 				--print(ID,k)

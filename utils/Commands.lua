@@ -2,6 +2,8 @@ addonName, GLink = ...;
 
 GLink.colour = "|cff00CCFF";
 GLink.altColour = "|cffADFFFF";
+GLink.currentMap = GLink.currentMap or nil;
+
 GLink.commands = {
 
     ["lookup"] = {
@@ -20,39 +22,49 @@ GLink.hyperlinks = {
         ["PATTERN"] = {"gameobject_entry:(%d*)"}, 
         ["RETURNS"] = {"[Spawn]"},
         ["COMMAND"] = {"gobject spawn #gameobject_entry"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["item"] = {
         ["PATTERN"] = {"item:(%d*)"},
         ["RETURNS"] = {"[Add]"},
         ["COMMAND"] = {"additem #item"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["creature_entry"] = {
         ["PATTERN"] = {"creature_entry:(%d*)"},
         ["RETURNS"] = {"[Spawn]"},
         ["COMMAND"] = {"npc spawn #creature_entry"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["lookup next"] = {
         ["PATTERN"] = {"Enter .lookup next to view the next (%d*) results"},
         ["RETURNS"] = {"[Next]"},
         ["COMMAND"] = {"lookup next"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["gameobject_GUID"] = {
-        --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
         ["PATTERN"] = {"%(GUID: |cff00CCFF(%d*)|r%)", "gameobject_GUID:(%d*)"},
         ["RETURNS"] = {"[Select]", "[Go]", "[Delete]"},
         ["COMMAND"] = {"gobject select #gameobject_GUID", "gobject go #gameobject_GUID", "gobject delete #gameobject_GUID"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["NPC_GUID"] = {
-        --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
         ["PATTERN"] = {"%Selected NPC: GUID: |cff00CCFF(%d*)|r,", "NPC_GUID:(%d*)"},
         ["RETURNS"] = {"[Go]", "[Delete]"},
         ["COMMAND"] = {"npc go #NPC_GUID", "npc delete #NPC_GUID"},
+        ["TOOLTIP_TEXT"] = {},
     },
     ["NPC_DISPLAYID"] = {
-        --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
         ["PATTERN"] = {", DisplayID: |cff00CCFF(%d*)|r,", "NPC_DISPLAYID:(%d*)"},
         ["RETURNS"] = {"[Morph]", "[Native]", "[Mount]"},
-        ["COMMAND"] = {"morph #NPC_DISPLAYID", "mod native #NPC_DISPLAYID", "mod mount"},
+        ["COMMAND"] = {"morph #NPC_DISPLAYID", "mod native #NPC_DISPLAYID", "mod mount #NPC_DISPLAYID"},
+        ["TOOLTIP_TEXT"] = {},
+    },
+    ["CREATURE_DISPLAYID"] = {
+        ["PATTERN"] = {"%[|cff00CCFF(%d*)|r.*%.m2", "CREATURE_DISPLAYID:(%d*)"},
+        ["RETURNS"] = {"[Morph]", "[Native]", "[Mount]"},
+        ["COMMAND"] = {"morph #CREATURE_DISPLAYID", "mod native #CREATURE_DISPLAYID", "mod mount #CREATURE_DISPLAYID"},
+        ["TOOLTIP_TEXT"] = {},
     },
     --735.5 changes
     -- ["gameobject_GUID"] = {

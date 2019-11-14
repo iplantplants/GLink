@@ -24,6 +24,7 @@ Date system: DD/MM/YYYY
 ##  18/10/2019 - 0.9.7
 ##  19/10/2019 - 0.9.8
 ##  02/11/2019 - 0.9.9
+## 14/11/2019 -  1.0.0
 
 
 ## [Unreleased]
@@ -131,3 +132,17 @@ Date system: DD/MM/YYYY
 ### Changed
 * Whenever you enter the world through .teleport or logging in, your client queries .gps to grab your coordinates.
 
+*** GLink RE-DONE ***
+
+
+## [1.0.0] - 8/11/2019
+### Changed
+* Started rewriting addon.
+* Changed colours to match Epsilons.
+
+### Added
++ Addon now loops through big array of commands to match and apply useful hyperlinks for.
+
+## [1.0.2] - 13/11/2019
+### Added
++ Each hyperlink sort has multiple patterns to match for, which is done in a specific order to find and return the right hyperlinks.

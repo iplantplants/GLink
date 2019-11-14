@@ -1,4 +1,4 @@
-addon, GLink = ...;
+addonName, GLink = ...;
 
 --Debug
 
