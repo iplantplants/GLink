@@ -14,10 +14,8 @@ local origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 					if link:match(v["PATTERN"][i]:gsub("%(",""):gsub("%)","")) then
 						--print("match hyperlink")
 						
-						if link:match(v["PATTERN"][i]) then
+						if link:match(v["PATTERN"][i]) and not ID then
 							ID = link:match(v["PATTERN"][i]);
-						else
-							ID = text:match(k..":(%d*)")
 						end
 						IDType = k;
 						hyperlink = text:match("(%[.+%])")
@@ -45,7 +43,7 @@ end
 
 local function debugChatLookupFilter(self,event,message,...)
 
-	print(message:gsub("|",""))
+	--print(message:gsub("|",""))
 
 	for k,v in pairs(GLink.hyperlinks) do
 		local ID, IDType;
@@ -55,17 +53,17 @@ local function debugChatLookupFilter(self,event,message,...)
 				print("match")
 				ID = message:match(v["PATTERN"][i]);
 				IDType = k;
-				print(ID,k)
+				--print(ID,k)
 			end
 		end
-		
-	end
-	--print(ID,IDType)
-	if ID and IDType then
-		for k,v in pairs(GLink.hyperlinks[IDType]["RETURNS"]) do
-			message = message .. GLink.altColour .. " -|r " ..  GLink:HyperlinkHandler(ID,IDType,v)
+		if ID and IDType then
+			for k,v in pairs(GLink.hyperlinks[IDType]["RETURNS"]) do
+				message = message .. GLink.altColour .. " -|r " ..  GLink:HyperlinkHandler(ID,IDType,v)
+			end
 		end
 	end
+	--print(ID,IDType)
+
 	return false, message,...;
 end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", debugChatLookupFilter);

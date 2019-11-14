@@ -8,7 +8,7 @@ print("Linkifier_Debug")
 
 
 function GLink:HyperlinkHandler(ID,IDType,hyperlink)
-	print(ID,IDType,hyperlink)
+	--print(ID,IDType,hyperlink)
 	local hyperlink = GLink.colour.. "|H"..IDType..":"..ID.."|h"..hyperlink.."|h|r";
 
 	return hyperlink;

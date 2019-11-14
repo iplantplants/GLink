@@ -36,11 +36,23 @@ GLink.hyperlinks = {
         ["RETURNS"] = {"[Next]"},
         ["COMMAND"] = {"lookup next"},
     },
-    ["GUID"] = {
+    ["gameobject_GUID"] = {
         --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
-        ["PATTERN"] = {"%(GUID: |cff00CCFF(%d*)|r%)"},
+        ["PATTERN"] = {"%(GUID: |cff00CCFF(%d*)|r%)", "gameobject_GUID:(%d*)"},
         ["RETURNS"] = {"[Select]", "[Go]", "[Delete]"},
-        ["COMMAND"] = {"gobject select #GUID", "gobject go #GUID", "gobject delete #GUID"},
+        ["COMMAND"] = {"gobject select #gameobject_GUID", "gobject go #gameobject_GUID", "gobject delete #gameobject_GUID"},
+    },
+    ["NPC_GUID"] = {
+        --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
+        ["PATTERN"] = {"%Selected NPC: GUID: |cff00CCFF(%d*)|r,", "NPC_GUID:(%d*)"},
+        ["RETURNS"] = {"[Go]", "[Delete]"},
+        ["COMMAND"] = {"npc go #NPC_GUID", "npc delete #NPC_GUID"},
+    },
+    ["NPC_DISPLAYID"] = {
+        --["PATTERN"] = {"Selected gameobject "..GLink.colour.."%[.*%]|r %(GUID: "..GLink.colour.."(%d*)|r%)", "GUID:(%d*)"},
+        ["PATTERN"] = {", DisplayID: |cff00CCFF(%d*)|r,", "NPC_DISPLAYID:(%d*)"},
+        ["RETURNS"] = {"[Morph]", "[Native]", "[Mount]"},
+        ["COMMAND"] = {"morph #NPC_DISPLAYID", "mod native #NPC_DISPLAYID", "mod mount"},
     },
     --735.5 changes
     -- ["gameobject_GUID"] = {
