@@ -1,16 +1,11 @@
---Linkifier_GPS
-
-addonName, GLink = ...;
-local x, y, z, mapID, orientation = nil
-local reload = false;
-
-GLink.currentMap = nil;
- 
---Linkifier_GPS
-
+--
+--
+--
+GLink.channel = "xtensionxtooltip2";
+local channelID = GetChannelName(GLink.channel)
 local function debugAddonMessageFilter(self,event,message,...)
 
-	print(event,message,sender)
+	--print("GLINK:", event,message,sender)
 	--print(message:gsub("|",""));
 
 end
@@ -45,19 +40,22 @@ local prefixes = {
     [3] = "EPSILON_G_LOGS",
 	[4] = "EPSILON_TYPING",
 	[5] = "EPSILON_P_MAP",
+	[6] = "EPSILON_G_SKBX",
 }
+
 function EpsilonMessage(prefix, message)
 
 print(prefixes[prefix], message)
-SendAddonMessage(prefixes[prefix], message, "CHANNEL", 1)
+RegisterAddonMessagePrefix(prefixes[prefix])
+
+SendAddonMessage(prefixes[prefix], message, "CHANNEL", channelID)
 
 end
 
-GLink_GetMap = CreateFrame("FRAME");
-GLink_GetMap:RegisterEvent("PLAYER_ENTERING_WORLD");
-GLink_GetMap:SetScript("OnEvent", function(self, event)
+local init = CreateFrame("FRAME");
+init:RegisterEvent("PLAYER_ENTERING_WORLD");
+init:SetScript("OnEvent", function(self,event)
 
-	GLink.currentMap = select(8,GetInstanceInfo());
-	--print(GLink.currentMap)
+    JoinChannelByName(GLink.channel)
 
-end)
+end);

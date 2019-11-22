@@ -3,13 +3,7 @@
 ..\FrameXML\UI.xsd">
 
 <!--I forgot what module-->
-<Script file="GLink_Resources.lua"/>
-<Script file="GLink_Main.lua"/>
-<Script file="GLink_GUI.lua"/>
-<Script file="GLink_Debug.lua"/>
-
-
-<Include file="utils\Utils.xml"/>
-<Include file="interface\GLink_Elements.xml"/>
-
+<Script file="GLink_UI.lua"/>
+<Script file="GLink_UI_Utils.lua"/>
+<Script file="GLink_UI_Resources.lua"/>
 </Ui>
