@@ -68,7 +68,7 @@ end
 function GLink:CopyMapCoordinates(message, IDType)
 
 	local x, y, z, ori, map = GLink:HandleMapCoordinates(message, IDType);
-	print(x,y,z,ori,map)
+	--print(x,y,z,ori,map)
 	ChatFrame1EditBox:SetFocus()
 		
 		if ChatFrame1EditBox:GetText() == nil then

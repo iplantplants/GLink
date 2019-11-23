@@ -47,7 +47,7 @@ local origChatFrame_OnHyperlinkShow = ChatFrame_OnHyperlinkShow;
 				return false;
 			end
 		elseif type(text) == "string" and IsModifiedClick() then
-			print("modified")
+			--print("modified")
 			if link:match("gameobject_GPS") then
 				IDType = "gameobject_GPS";
 				ID = link:gsub(IDType, "");
@@ -82,7 +82,7 @@ local function debugChatLookupFilter(self,event,message,...)
 			end
 		end
 		if ID and IDType then
-			print(ID,IDType)
+			--print(ID,IDType)
 			for k,v in pairs(GLink.hyperlinks[IDType]["RETURNS"]) do
 				if IDType == "gameobject_GPS" then
 					x, y, z, orientation = GLink:HandleMapCoordinates(message, IDType)					

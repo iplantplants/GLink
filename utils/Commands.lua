@@ -46,13 +46,13 @@ GLink.hyperlinks = {
         ["PATTERN"] = {"%(GUID: |cff00CCFF(%d*)|r%)", "gameobject_GUID:(%d*)"},
         ["RETURNS"] = {"[Select]", "[Go]", "[Delete]"},
         ["COMMAND"] = {"gobject select #gameobject_GUID", "gobject go #gameobject_GUID", "gobject delete #gameobject_GUID"},
-        ["TOOLTIP_TEXT"] = {"Select gameobject with GUID: #gameobject_GUID", "Go to object with GUID: #gameobject_GUID", "Delete gobject with GUID: #gameobject_GUID"},
+        ["TOOLTIP_TEXT"] = {"Select gameobject with GUID: "..GLink.colour.."#gameobject_GUID", "Go to object with GUID: "..GLink.colour.."#gameobject_GUID", "Delete gobject with GUID: "..GLink.colour.."#gameobject_GUID"},
     },
     ["gameobject_ENTRY"] = {
         ["PATTERN"] = {"Spawned gameobject |cff00CCFF%[.+ %- (%d*)%]",  "Selected gameobject |cff00CCFF%[.+ %- (%d*)%]", "gameobject_ENTRY:(%d*)"},
         ["RETURNS"] = {"[Spawn]"},
         ["COMMAND"] = {"gobject spawn #gameobject_ENTRY"},
-        ["TOOLTIP_TEXT"] = {"Spawn gameobject with entry: #gameobject_ENTRY"},
+        ["TOOLTIP_TEXT"] = {"Spawn gameobject with entry: "..GLink.colour.."#gameobject_ENTRY|r"},
     },
     ["NPC_GUID"] = {
         ["PATTERN"] = {"%Selected NPC: GUID: |cff00CCFF(%d*)|r,", "NPC_GUID:(%d*)"},
