@@ -41,6 +41,9 @@ local prefixes = {
 	[4] = "EPSILON_TYPING",
 	[5] = "EPSILON_P_MAP",
 	[6] = "EPSILON_G_SKBX",
+	[7] = "EPSILON_S_PRVCY",
+	[8] = "EPSILON_S_NAME",
+	
 }
 
 function EpsilonMessage(prefix, message)
