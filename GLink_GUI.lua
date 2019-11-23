@@ -20,7 +20,9 @@ function OnHyperlinkEnter(frame, link, linkData, ...)
     return false
     
     end
-
+    if link:match("player:") then
+        return false;
+    end
     
     local IDType = link:match("(%w+%_?%s?%w*):%d*")
     local ID = link:gsub(IDType..":","")
@@ -30,16 +32,13 @@ function OnHyperlinkEnter(frame, link, linkData, ...)
 
     --get tooltip text
 
-    if IDType:match("player") then
 
-    else
         for k,v in pairs(GLink.hyperlinks[IDType]["RETURNS"]) do
             if v == hyperlink then
                 commandIndex = k;
                 --print(ID,k,v,GLink.hyperlinks[IDType]["COMMAND"][k])
             end
         end
-    end
 
 
     

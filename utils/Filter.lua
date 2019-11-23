@@ -71,7 +71,7 @@ end
 
 local function debugChatLookupFilter(self,event,message,...)
 	local x, y, z, orientation;
-	--print(message:gsub("|",""))
+	--print(message:gsub("|","~"))
 
 	for k,v in pairs(GLink.hyperlinks) do
 		local ID, IDType;
@@ -82,6 +82,7 @@ local function debugChatLookupFilter(self,event,message,...)
 			end
 		end
 		if ID and IDType then
+			print(ID,IDType)
 			for k,v in pairs(GLink.hyperlinks[IDType]["RETURNS"]) do
 				if IDType == "gameobject_GPS" then
 					x, y, z, orientation = GLink:HandleMapCoordinates(message, IDType)					
