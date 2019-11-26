@@ -84,7 +84,7 @@ GLink.hyperlinks = {
         ["PATTERN"] = {"Htele:(%d*)", "tele:(%d*)"},
         ["RETURNS"] = {"[Teleport]"},
         ["COMMAND"] = {"tele #tele"},
-        ["TOOLTIP_TEXT"] = {},
+        ["TOOLTIP_TEXT"] = {"Click to teleport to: "..GLink.colour.."#tele|r"},
     },
     ["spell"] = {
 
@@ -92,6 +92,12 @@ GLink.hyperlinks = {
         ["RETURNS"] = {"[Cast]", "[Aura]"},
         ["COMMAND"] = {"cast #spell", "aura #spell"},
         ["TOOLTIP_TEXT"] = {},
+    },
+    ["lnkfer"] = {
+        ["PATTERN"] = {"lnkfer:(.+)"},
+        ["RETURNS"] = {"[Copy URL]"},
+        ["COMMAND"] = {"#lnkfer"},
+        ["TOOLTIP_TEXT"] = {"Copy URL #lnkfer"},
     },
     --735.5 changes
     -- ["gameobject_GUID"] = {

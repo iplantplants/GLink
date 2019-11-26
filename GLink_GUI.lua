@@ -15,12 +15,13 @@ local linktypes = {
 function OnHyperlinkEnter(frame, link, linkData, ...)
     --print(link, linkData)
     local linktype = link:match('^([^:]+)')
+    --print(linktype,link,linkData)
     if link:match("ezc:") or link:match("PGUID:") or link:match("acc:") then
     --easycopy compatibility lol
     return false
     
     end
-    if link:match("player:") then
+    if link:match("player:") or link:match("channel") then
         return false;
     end
     

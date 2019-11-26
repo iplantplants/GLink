@@ -32,6 +32,8 @@ function GLink:ExecuteCommand(ID,IDType,hyperlink)
 			local x, y, z, ori, map = GLink:HandleMapCoordinates(ID, IDType);
 				SendChatMessage("." .. GLink.hyperlinks[IDType]["COMMAND"][commandIndex]:match("^%w*") .. " " .. x .. " " .. y .. " " .. z .. " " .. map .. " " .. ori);
 			return true;
+		elseif IDType == "lnkfer" then
+			
 		else
 			SendChatMessage("." .. GLink.hyperlinks[IDType]["COMMAND"][commandIndex]:gsub("%#"..IDType,ID));
 			return true;

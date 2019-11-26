@@ -5,4 +5,6 @@
 <Script file="Linkifier.lua"/>
 <Script file="Filter.lua"/>
 <Script file="Commands.lua"/>
+<Script file="URLS.lua"/>
+
 </Ui>
