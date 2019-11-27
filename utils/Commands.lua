@@ -91,7 +91,7 @@ GLink.hyperlinks = {
         ["PATTERN"] = {"Hspell:(%d*)", "spell:(%d*)"},
         ["RETURNS"] = {"[Cast]", "[Aura]"},
         ["COMMAND"] = {"cast #spell", "aura #spell"},
-        ["TOOLTIP_TEXT"] = {},
+        ["TOOLTIP_TEXT"] = {"Cast spell with ID: "..GLink.colour.."#spell|r","Apply spell aura with ID: "..GLink.colour.."#spell|r"},
     },
     ["lnkfer"] = {
         ["PATTERN"] = {"lnkfer:(.+)"},
